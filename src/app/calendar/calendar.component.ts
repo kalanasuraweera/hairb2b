@@ -45,7 +45,7 @@ export class CalendarComponent implements OnInit {
   headerButtonClick(ev):void{
       var temp = ev as Date;  
       this.viewDate.setMonth(temp.getMonth());
-      
+      // console.log(this.viewDate.;
       this.viewDate = new Date(this.viewDate.getTime());
   }
 

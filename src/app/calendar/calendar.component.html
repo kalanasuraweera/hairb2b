@@ -13,14 +13,14 @@
 
 
 <ng-template #cellTemplate let-day="day" let-locale="locale">
-  <div class="cal-cell-top">
+  <div class="cal-cell-top" >
     <div class="cal-day-number w3-xlarge">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</div>
     <br>
     
   </div>
-  <div>
+  <div *ngIf = "day.inMonth">
     <table style="width:100%">
-      <tr class="w3-green "><td class="calendar-slot w3-hoverable">Morning</td></tr>
+      <tr class="w3-green "><td class="calendar-slot">Morning</td></tr>
       <tr class="w3-green"><td class="calendar-slot">Evening</td></tr>
     </table>
   </div>

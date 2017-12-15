@@ -26,4 +26,9 @@ export class CalendarheaderComponent implements OnInit {
     this.viewDateChange.emit(this.viewDate);
     // console.log(this.viewDate);
   }
+
+  clickToday():void {
+    this.viewDate = new Date();
+    this.viewDateChange.emit(this.viewDate);
+  }
 }

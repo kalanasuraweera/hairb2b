@@ -14,8 +14,15 @@
 
 <ng-template #cellTemplate let-day="day" let-locale="locale">
   <div class="cal-cell-top">
-    <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
-    <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+    <div class="cal-day-number w3-xlarge">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</div>
+    <br>
+    
+  </div>
+  <div>
+    <table style="width:100%">
+      <tr class="w3-green "><td class="calendar-slot w3-hoverable">Morning</td></tr>
+      <tr class="w3-green"><td class="calendar-slot">Evening</td></tr>
+    </table>
   </div>
   
 </ng-template>
@@ -24,6 +31,8 @@
   <mwl-calendar-month-view
     [viewDate]="viewDate"
     [events]="events"
+    (eventClicked)="eventClicked($event)"
+    (dayClicked)="dayClicked($event)"
     [cellTemplate]="cellTemplate">
   </mwl-calendar-month-view>
   

@@ -21,21 +21,21 @@ import {
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { StylistListComponent } from './stylist-list/stylist-list.component';
-import { SidesearchComponent } from './sidesearch/sidesearch.component';
 import { SearchcriteriaComponent } from './searchcriteria/searchcriteria.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarheaderComponent } from './calendar/utils/calendarheader/calendarheader.component';
+import { StylistProfileSalonviewComponent } from './stylist-profile-salonview/stylist-profile-salonview.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    StylistListComponent,
-    SidesearchComponent,
+    StylistListComponent,    
     SearchcriteriaComponent,
     CalendarComponent,
     CalendarheaderComponent,
+    StylistProfileSalonviewComponent,
   ],
   imports: [
     BrowserModule,

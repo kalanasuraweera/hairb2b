@@ -15,7 +15,8 @@ import {
   MatSelectModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatSliderModule
+  MatSliderModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -51,7 +52,8 @@ import { StylistProfileSalonviewComponent } from './stylist-profile-salonview/st
     MatNativeDateModule,
     MatSliderModule,
     CalendarModule.forRoot(),
-    CommonModule
+    CommonModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

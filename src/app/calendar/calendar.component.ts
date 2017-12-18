@@ -55,12 +55,11 @@ export class CalendarComponent implements OnInit {
       this.viewDate = new Date(this.viewDate.getTime());
   }
 
-  createCalendarEvent():void{
-
-  }
 
   dayClicked({ event }: { event: CalendarEvent }) : void {
 
   }
+
+  
   
 }

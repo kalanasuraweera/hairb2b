@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
+import { MatCheckboxChange, MatCheckbox } from '@angular/material';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class CalendarComponent implements OnInit {
   testDate: Date;
   numb: number=5;
   isSlotFree: boolean[][]=[[true,true]];
+  selectedSlots: string[]=[];
   events: CalendarEvent[] = [ 
     {
       title: 'Editable event',
@@ -53,6 +55,15 @@ export class CalendarComponent implements OnInit {
       var temp = ev as Date;  
       this.viewDate.setMonth(temp.getMonth());
       this.viewDate = new Date(this.viewDate.getTime());
+      // console.log(document.getElementById("21_11_2017_e"));
+      // for(var val in this.selectedSlots) {
+      //   var tempCheck;
+      //   console.log(val);
+      //   if(tempCheck=document.getElementById(this.selectedSlots[val])) {
+      //     tempCheck.checked = true;
+      //     console.log("bal");
+      //   }
+      // }
   }
 
 
@@ -60,6 +71,26 @@ export class CalendarComponent implements OnInit {
 
   }
 
+  editSelectedSlots(ev:MatCheckboxChange):void {
+    if(ev.checked) {
+      this.selectedSlots.push(ev.source.id);
+    }
+    else {
+      var index:number=this.selectedSlots.indexOf(ev.source.id);
+      if(index!= -1) {
+        this.selectedSlots.splice(index,1);      
+      }
+    }
+    console.log(this.selectedSlots);
+  }
   
+  isSelectedSlot(slot:string):boolean {
+    if(this.selectedSlots.indexOf(slot)>-1) {
+      console.log(this.selectedSlots.indexOf(slot));
+      return true;
+    }
+    return false;
+
+  } 
   
 }

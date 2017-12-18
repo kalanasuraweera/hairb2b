@@ -21,8 +21,9 @@
   </div>
   <div *ngIf = "day.inMonth">
     <table style="width:100%">
-      <tr class="w3-green "><td class="calendar-slot">Morning</td></tr>
-      <tr class="w3-green"><td class="calendar-slot">Evening</td></tr>
+      
+      <tr [ngClass]="isSlotFree[day.date.getDate()-1][0]? 'w3-green': 'w3-red'"><td class="calendar-slot">Morning</td></tr>
+      <tr [ngClass]="isSlotFree[day.date.getDate()-1][1]? 'w3-green': 'w3-red'"><td class="calendar-slot">Evening</td></tr>
     </table>
   </div>
   

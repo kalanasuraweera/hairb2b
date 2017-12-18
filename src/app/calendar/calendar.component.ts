@@ -17,6 +17,7 @@ export class CalendarComponent implements OnInit {
   viewDate: Date;
   testDate: Date;
   numb: number=5;
+  isSlotFree: boolean[][]=[[true,true]];
   events: CalendarEvent[] = [ 
     {
       title: 'Editable event',
@@ -38,6 +39,12 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.viewDate = new Date();
+    var i:number;
+    var j:number;
+    for(i=1;i<31;i++) {
+      this.isSlotFree.push([true,true]);      
+    }
+    
   }
 
   
@@ -45,7 +52,6 @@ export class CalendarComponent implements OnInit {
   headerButtonClick(ev):void{
       var temp = ev as Date;  
       this.viewDate.setMonth(temp.getMonth());
-      // console.log(this.viewDate.;
       this.viewDate = new Date(this.viewDate.getTime());
   }
 

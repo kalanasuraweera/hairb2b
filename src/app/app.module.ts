@@ -3,7 +3,7 @@ import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { CalendarModule } from 'angular-calendar';
 import { CommonModule } from '@angular/common';
-
+import { HttpClientModule } from '@angular/common/http';
 import 'hammerjs';
 import {
   MatButtonModule,
@@ -26,6 +26,7 @@ import { SearchcriteriaComponent } from './searchcriteria/searchcriteria.compone
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarheaderComponent } from './calendar/utils/calendarheader/calendarheader.component';
 import { StylistProfileSalonviewComponent } from './stylist-profile-salonview/stylist-profile-salonview.component';
+
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { StylistProfileSalonviewComponent } from './stylist-profile-salonview/st
     MatSliderModule,
     CalendarModule.forRoot(),
     CommonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

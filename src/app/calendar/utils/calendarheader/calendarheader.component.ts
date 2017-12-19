@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {HttpClient,HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-calendarheader',
@@ -10,9 +11,13 @@ export class CalendarheaderComponent implements OnInit {
   @Input() viewDate : Date;
   @Input() locale: string = 'en';
   @Output() viewDateChange: EventEmitter<Date> = new EventEmitter();
-  constructor() { }
+  constructor(private http:HttpClient) {
+    
+  }
 
   ngOnInit() {
+    let p = new HttpParams().set('month','12');
+    this.http.get("http://localhost:51967/api/stylists/getBusyDates",{params:p});
   }
 
   clickPrevious():void {

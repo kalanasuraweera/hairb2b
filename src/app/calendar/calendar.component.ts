@@ -4,6 +4,7 @@ import { CalendarEvent } from 'angular-calendar';
 import { MatCheckboxChange, MatCheckbox } from '@angular/material';
 
 
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -31,13 +32,9 @@ export class CalendarComponent implements OnInit {
       
     }];
 
-    eventClicked({event} :{event : CalendarEvent} ): void {
-      console.log(event);
-    }
+   
 
-  constructor() { 
-    
-  }
+
 
   ngOnInit() {
     this.viewDate = new Date();
@@ -86,7 +83,7 @@ export class CalendarComponent implements OnInit {
   
   isSelectedSlot(slot:string):boolean {
     if(this.selectedSlots.indexOf(slot)>-1) {
-      console.log(this.selectedSlots.indexOf(slot));
+      
       return true;
     }
     return false;

@@ -24,7 +24,8 @@
       
       <tr>
         <td  class="calendar-slot" [ngClass]="isSlotFree[day.date.getDate()-1][0]? 'w3-green': 'w3-red'">Morning</td>
-        <mat-checkbox 
+        <mat-checkbox (change)="editSelectedSlots($event)"
+        [checked] ="isSelectedSlot(day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_m')?true:false" 
         [id]="day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_m'" 
         *ngIf="isSlotFree[day.date.getDate()-1][0]"></mat-checkbox>
       </tr>

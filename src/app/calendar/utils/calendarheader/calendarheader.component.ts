@@ -16,8 +16,7 @@ export class CalendarheaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    let p = new HttpParams().set('month','12');
-    this.http.get("http://localhost:51967/api/stylists/getBusyDates",{params:p});
+   
   }
 
   clickPrevious():void {

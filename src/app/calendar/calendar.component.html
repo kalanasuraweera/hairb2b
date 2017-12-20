@@ -23,14 +23,14 @@
     <table style="width:100%">
       
       <tr>
-        <td  class="calendar-slot" [ngClass]="isSlotFree[day.date.getDate()-1][0]? 'w3-green': 'w3-red'">Morning</td>
+        <td  class="calendar-slot" [ngClass]="{'w3-green': isSlotFree[day.date.getDate()-1][0] , 'w3-red': !isSlotFree[day.date.getDate()-1][0] }">Morning</td>
         <mat-checkbox (change)="editSelectedSlots($event)"
         [checked] ="isSelectedSlot(day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_m')?true:false" 
         [id]="day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_m'" 
         *ngIf="isSlotFree[day.date.getDate()-1][0]"></mat-checkbox>
       </tr>
       <tr>
-        <td class="calendar-slot" [ngClass]="isSlotFree[day.date.getDate()-1][1]? 'w3-green': 'w3-red'">Evening</td>
+        <td class="calendar-slot" [ngClass]="{'w3-green': isSlotFree[day.date.getDate()-1][1] , 'w3-red': !isSlotFree[day.date.getDate()-1][1] }">Evening</td>
         <mat-checkbox (change)="editSelectedSlots($event)"
         [checked] ="isSelectedSlot(day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_e')?true:false" 
         [id]="day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_e'" 
@@ -44,11 +44,10 @@
 
 <div>
   <mwl-calendar-month-view
-    [viewDate]="viewDate"
-    [events]="events"
-    (eventClicked)="eventClicked($event)"
-    (dayClicked)="dayClicked($event)"
-    [cellTemplate]="cellTemplate">
+    [viewDate]="viewDate"   
+    [cellTemplate]="cellTemplate"
+    [refresh]="refresh"
+    >
   </mwl-calendar-month-view>
   <div class="w3-center">
     <button mat-raised-button >Make booking</button> 

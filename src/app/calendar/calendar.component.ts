@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent } from 'angular-calendar';
+import { CalendarEvent,CalendarMonthViewDay } from 'angular-calendar';
 import { MatCheckboxChange, MatCheckbox } from '@angular/material';
-
+import {HttpClient,HttpParams} from '@angular/common/http';
+import { Subject } from 'rxjs/Subject';
 
 
 @Component({
@@ -12,8 +13,6 @@ import { MatCheckboxChange, MatCheckbox } from '@angular/material';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-
-
 export class CalendarComponent implements OnInit {
   view: string = 'month';
   viewDate: Date;
@@ -21,32 +20,52 @@ export class CalendarComponent implements OnInit {
   numb: number=5;
   isSlotFree: boolean[][]=[[true,true]];
   selectedSlots: string[]=[];
-  events: CalendarEvent[] = [ 
-    {
-      title: 'Editable event',
-      color: {
-        primary: '#e3bc08',
-        secondary: '#FDF1BA'
-      },
-      start: new Date()
-      
-    }];
+  refresh: Subject<any> = new Subject();
+ 
 
-   
 
+  
+    
+  constructor(private http:HttpClient, private zone:NgZone) {
+    
+  }
 
 
   ngOnInit() {
     this.viewDate = new Date();
     var i:number;
     var j:number;
+
     for(i=1;i<31;i++) {
       this.isSlotFree.push([true,true]);      
+    }
+    let p = new HttpParams().set('month',(this.viewDate.getMonth()+1).toString());
+    
+    this.http.get<busyDateResponse[]>("http://localhost:51967/api/stylists/getBusyDates",{params:p}).subscribe(res=>{this.zone.run(() => this.setIsSlotFree(res) ) });
+  
+    console.log(this.isSlotFree);
+    this.viewDate = new Date();
+  
+  }
+
+  // beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+  //   let p = new HttpParams().set('month',(this.viewDate.getMonth()+1).toString());
+  //   this.http.get<busyDateResponse[]>("http://localhost:51967/api/stylists/getBusyDates",{params:p}).subscribe(res=>this.setIsSlotFree(res));
+  //   console.log(this.isSlotFree);
+  // }
+
+  
+  setIsSlotFree(res:busyDateResponse[]):void {
+    var busy_date:busyDateResponse;
+    for(busy_date of res) {
+        var temp:number = (busy_date.slot=='m')?0:1;
+        this.isSlotFree[busy_date.day-1][temp] = false;
     }
     
   }
 
   
+
 
   headerButtonClick(ev):void{
       var temp = ev as Date;  
@@ -64,9 +83,7 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  dayClicked({ event }: { event: CalendarEvent }) : void {
-
-  }
+  
 
   editSelectedSlots(ev:MatCheckboxChange):void {
     if(ev.checked) {
@@ -90,4 +107,12 @@ export class CalendarComponent implements OnInit {
 
   } 
   
+}
+
+interface busyDateResponse {
+  $id : string;
+  day : number;
+  month: number;
+  year: number;
+  slot: string;
 }

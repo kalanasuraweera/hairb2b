@@ -24,14 +24,14 @@
       
       <tr>
         <td  class="calendar-slot" [ngClass]="{'w3-green': isSlotFree[day.date.getDate()-1][0] , 'w3-red': !isSlotFree[day.date.getDate()-1][0] }">Morning</td>
-        <mat-checkbox (change)="editSelectedSlots($event)"
+        <mat-checkbox style="padding-left: 10px" (change)="editSelectedSlots($event)"
         [checked] ="isSelectedSlot(day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_m')?true:false" 
         [id]="day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_m'" 
         *ngIf="isSlotFree[day.date.getDate()-1][0]"></mat-checkbox>
       </tr>
       <tr>
-        <td class="calendar-slot" [ngClass]="{'w3-green': isSlotFree[day.date.getDate()-1][1] , 'w3-red': !isSlotFree[day.date.getDate()-1][1] }">Evening</td>
-        <mat-checkbox (change)="editSelectedSlots($event)"
+        <td  class="calendar-slot" [ngClass]="{'w3-green': isSlotFree[day.date.getDate()-1][1] , 'w3-red': !isSlotFree[day.date.getDate()-1][1] }">Evening</td>
+        <mat-checkbox style="padding-left: 10px" (change)="editSelectedSlots($event)"
         [checked] ="isSelectedSlot(day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_e')?true:false" 
         [id]="day.date.getDate() + '_' + day.date.getMonth() + '_' + day.date.getFullYear() + '_e'" 
         *ngIf="isSlotFree[day.date.getDate()-1][1]">

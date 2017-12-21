@@ -1,4 +1,4 @@
-import { Component, OnInit,NgZone } from '@angular/core';
+import { Component, OnInit,NgZone,Input } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent,CalendarMonthViewDay } from 'angular-calendar';
 import { MatCheckboxChange, MatCheckbox } from '@angular/material';
@@ -18,6 +18,7 @@ export class CalendarComponent implements OnInit {
   viewDate: Date;
   testDate: Date;
   numb: number=5;
+  @Input() stylistId:number;
   isSlotFree: boolean[][]=[[true,true]];
   selectedSlots: string[]=[];
   refresh: Subject<any> = new Subject();

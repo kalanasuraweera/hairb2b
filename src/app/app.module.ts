@@ -29,7 +29,12 @@ import { CalendarheaderComponent } from './calendar/utils/calendarheader/calenda
 import { StylistProfileSalonviewComponent } from './stylist-profile-salonview/stylist-profile-salonview.component';
 import { StylistCardComponent } from './stylist-card/stylist-card.component';
 
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  { path: 'style', component: StylistProfileSalonviewComponent },
+  { path: '', component: HomeComponent }
+];
 
 @NgModule({
   declarations: [
@@ -59,7 +64,8 @@ import { StylistCardComponent } from './stylist-card/stylist-card.component';
     CommonModule,
     MatCheckboxModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

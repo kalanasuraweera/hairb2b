@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StylistCardComponent implements OnInit {
 
+  stylistId:number;
+  rating: number;
+  category: string;
+  charge: number;
+
   constructor() { }
 
   ngOnInit() {

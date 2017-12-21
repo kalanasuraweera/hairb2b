@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-stylist-card',
@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StylistCardComponent implements OnInit {
 
-  stylistId:number;
-  rating: number;
-  category: string;
-  charge: number;
+  @Input() stylistId:number;
+  @Input() name:string;
+  @Input() rating: number;
+  @Input() category: string;
+  @Input() costPerSlot: number;
 
   constructor() { }
 

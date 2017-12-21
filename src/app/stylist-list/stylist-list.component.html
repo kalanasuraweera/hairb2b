@@ -1,3 +1,10 @@
-<p>
-  stylist-list works!
-</p>
+<div class="w3-center">
+  <app-stylist-card
+   *ngFor="let stylist of stylistList"
+   [stylistId] = "stylist.id"
+   [name] = "stylist.name"
+   [rating] = "stylist.rating"
+   [category] = "stylist.category"
+   [costPerSlot] = "stylist.costPerSlot"
+   ></app-stylist-card>
+</div>

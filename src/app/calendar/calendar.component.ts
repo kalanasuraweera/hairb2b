@@ -44,7 +44,7 @@ export class CalendarComponent implements OnInit {
     this.http.get<busyDateResponse[]>("http://localhost:51967/api/stylists/getBusyDates",{params:p}).subscribe(res=>{this.zone.run(() => this.setIsSlotFree(res) ) });
   
     console.log(this.isSlotFree);
-    this.viewDate = new Date();
+    
   
   }
 
@@ -71,15 +71,14 @@ export class CalendarComponent implements OnInit {
       var temp = ev as Date;  
       this.viewDate.setMonth(temp.getMonth());
       this.viewDate = new Date(this.viewDate.getTime());
-      // console.log(document.getElementById("21_11_2017_e"));
-      // for(var val in this.selectedSlots) {
-      //   var tempCheck;
-      //   console.log(val);
-      //   if(tempCheck=document.getElementById(this.selectedSlots[val])) {
-      //     tempCheck.checked = true;
-      //     console.log("bal");
-      //   }
-      // }
+      var i:number;
+      for(i=0;i<31;i++) {
+        this.isSlotFree[i][0]=true;  
+        this.isSlotFree[i][1]=true;    
+      }
+      let p = new HttpParams().set('month',(this.viewDate.getMonth()+1).toString());
+      this.http.get<busyDateResponse[]>("http://localhost:51967/api/stylists/getBusyDates",{params:p}).subscribe(res=>{this.zone.run(() => this.setIsSlotFree(res) );console.log(res) });
+      console.log(this.isSlotFree);
   }
 
 

@@ -5,6 +5,7 @@ import { CalendarModule } from 'angular-calendar';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import 'hammerjs';
 import {
   MatButtonModule,
@@ -17,7 +18,8 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatSliderModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatAutocompleteModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -66,7 +68,10 @@ const routes: Routes = [
     MatCheckboxModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

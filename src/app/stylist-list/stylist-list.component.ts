@@ -19,7 +19,7 @@ export class StylistListComponent implements OnInit {
 
   setStylistList():void {
     this.stylistList=[];
-    this.http.get<stylist[]>("http://localhost:51967/api/stylists/getDummyStylistCards").subscribe(res=>{this.stylistList=res;console.log(this.stylistList[0].id)});
+    this.http.get<stylist[]>("http://localhost:51967/api/stylists/getDummyStylistCards").subscribe(res=>{this.stylistList=res;});
   }
 
 }

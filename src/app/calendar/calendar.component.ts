@@ -40,7 +40,9 @@ export class CalendarComponent implements OnInit {
     for(i=1;i<31;i++) {
       this.isSlotFree.push([true,true]);      
     }
+    
     let p = new HttpParams().set('month',(this.viewDate.getMonth()+1).toString());
+    p=p.append('stylistId',this.stylistId.toString());
     
     this.http.get<busyDateResponse[]>("http://localhost:51967/api/stylists/getBusyDates",{params:p}).subscribe(res=>{this.zone.run(() => this.setIsSlotFree(res) ) });
   
@@ -78,7 +80,8 @@ export class CalendarComponent implements OnInit {
         this.isSlotFree[i][1]=true;    
       }
       let p = new HttpParams().set('month',(this.viewDate.getMonth()+1).toString());
-      this.http.get<busyDateResponse[]>("http://localhost:51967/api/stylists/getBusyDates",{params:p}).subscribe(res=>{this.zone.run(() => this.setIsSlotFree(res) );console.log(res) });
+      p=p.append('stylistId',this.stylistId.toString());
+      this.http.get<busyDateResponse[]>("http://localhost:51967/api/stylists/getBusyDates",{params:p}).subscribe(res=>{this.zone.run(() => this.setIsSlotFree(res) ); });
       
   }
 

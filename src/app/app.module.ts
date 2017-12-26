@@ -32,6 +32,7 @@ import { StylistCardComponent } from './stylist-card/stylist-card.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: 'style/:stylistId', component: StylistProfileSalonviewComponent },
   { path: 'style', component: StylistProfileSalonviewComponent },
   { path: '', component: HomeComponent }
 ];
